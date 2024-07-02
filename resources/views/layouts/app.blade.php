@@ -37,6 +37,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.5.4/autoNumeric.min.js"></script>
     <!-- END GA -->
 </head>
 </head>

@@ -50,7 +50,7 @@
                         
                         <div class="form-group">
                             <label>Price</label>
-                            <input id="" type="number" class="form-control @error('pricelist') is-invalid @enderror" name="pricelist" autofocus>
+                            <input id="harga" type="numbe" class="form-control @error('pricelist') is-invalid @enderror" name="pricelist" autofocus>
                             @error('pricelist')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -101,16 +101,62 @@
 @endsection
 
 @push('scripts')
-<!-- JS Libraies -->
-<script src="{{ asset('library/cleave.js/dist/cleave.min.js') }}"></script>
-<script src="{{ asset('library/cleave.js/dist/addons/cleave-phone.us.js') }}"></script>
-<script src="{{ asset('library/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('library/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
-<script src="{{ asset('library/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
-<script src="{{ asset('library/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-<script src="{{ asset('library/select2/dist/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 
-<!-- Page Specific JS File -->
-<script src="{{ asset('js/page/forms-advanced-forms.js') }}"></script>
+<script>
+// function formatRupiah(input) {
+//     // Ambil nilai input
+//     let value = input.value;
+
+//     // Hapus semua karakter kecuali digit dan koma
+//     value = value.replace(/[^\d,]/g, '');
+
+//     // Pisahkan bagian ribuan dengan regex
+//     let parts = value.split(',');
+
+//     // Format bagian ribuan dengan titik
+//     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+//     // Gabungkan kembali bagian ribuan dan koma jika ada
+//     let formattedValue = parts.join(',');
+
+//     // Set nilai input dengan nilai yang sudah diformat
+//     input.value = formattedValue;
+// }
+
+// document.querySelector('form').addEventListener('submit', function (e) {
+//     const input = document.getElementById('harga');
+//     // Hapus semua titik dalam nilai input
+//     let value = input.value.replace(/\./g, ''); // Menggunakan regex global untuk menghapus semua titik
+//     value = value.replace(/,/g, ''); // Menggunakan regex global untuk menghapus semua koma
+//     input.value = value;
+
+
+// });
+
+function formatRupiah(input) {
+    // Hapus semua karakter kecuali digit dan koma
+    let value = input.value.replace(/[^\d,]/g, '');
+
+    // Pisahkan bagian ribuan dengan regex
+    let parts = value.split(',');
+
+    // Format bagian ribuan dengan titik
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Gabungkan kembali bagian ribuan dan koma jika ada
+    let formattedValue = parts.join(',');
+
+    // Set nilai input dengan nilai yang sudah diformat
+    input.value = formattedValue;
+}
+
+document.querySelector('form').addEventListener('submit', function (e) {
+    const input = document.getElementById('harga');
+    // Hapus semua titik dan koma dalam nilai input
+    let value = input.value.replace(/\./g, ''); // Menghapus semua titik
+    value = value.replace(/,/g, ''); // Menghapus semua koma
+    input.value = value;
+});
+</script>
+{{-- <script src="{{ asset('js/page/forms-advanced-forms.js') }}"></script> --}}
 @endpush
