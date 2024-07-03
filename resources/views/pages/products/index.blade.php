@@ -67,6 +67,7 @@
                                         <th>Category</th>
                                         <th>Stock</th>
                                         <th>Price</th>
+                                        <th>Photo</th>
                                         <th>Created At</th>
                                         <th>Action</th>
                                     </tr>
@@ -76,6 +77,13 @@
                                         <td>{{ $product->category }}</td>
                                         <td>{{ $product->stock }}</td>
                                         <td>{{ $product->pricelist }}</td>
+                                        <td>
+                                            @if($product->image)
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" width="100px" alt="" class="img-thumbnail">
+                                            @else
+                                            <span class="badge badge-danger">No Image</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $product->created_at }}</td>
                                         <td>
                                             {{-- <div class="badge badge-primary">Published</div> --}}

@@ -33,7 +33,7 @@
                 {{-- <div class="card-header">
                     <h4>Create New User</h4>
                 </div> --}}
-                <form action="{{ route('product.store') }}" method="POST">
+                <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="card-body">
@@ -50,7 +50,7 @@
                         
                         <div class="form-group">
                             <label>Price</label>
-                            <input id="harga" type="numbe" class="form-control @error('pricelist') is-invalid @enderror" name="pricelist" autofocus>
+                            <input id="harga" type="number" class="form-control @error('pricelist') is-invalid @enderror" name="pricelist" autofocus>
                             @error('pricelist')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -86,7 +86,20 @@
 
                             </div>
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <label>Photo Product</label>
+                            <div class="col-sm-9"> 
+                                <input type="file" class="form-control" name="image"
+                                @error ('image') is-invalid @enderror>
+                            </div>
+                            @error ('image')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            </div>
+                        </div>
                     <div class="card-footer text-right">
                         <button class="btn btn-primary">
                             Submit
